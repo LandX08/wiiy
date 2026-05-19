@@ -1,0 +1,70 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+header {
+  background: #004080;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+header nav a {
+  color: #fff;
+  margin: 0 15px;
+  text-decoration: none;
+}
+
+header nav a:hover {
+  text-decoration: underline;
+}
+
+.hero {
+  padding: 60px 20px;
+  text-align: center;
+  background: #e6f0ff;
+}
+
+.features, .products, .about, .contact {
+  padding: 40px 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.features ul, .products .product-cards {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.products .card {
+  background: #fff;
+  padding: 15px;
+  width: 280px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.products .card img {
+  max-width: 100%;
+  border-radius: 5px;
+}
+
+footer {
+  background: #004080;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+}
+
+form input, form textarea, form button {
+  width: 100%;
+  padding
