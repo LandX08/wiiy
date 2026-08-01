@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>和小猫一起吃饭吗？</title>
+  <style>
+    :root { --cream:#fff8ef; --peach:#ffd6c2; --coral:#ed7b69; --wine:#8f3e4c; --ink:#563c43; }
+    * { box-sizing: border-box; }
+    body { margin:0; min-height:100vh; font-family: "PingFang SC","Microsoft YaHei",sans-serif; color:var(--ink); background: radial-gradient(circle at 18% 20%,#fff 0 4%,transparent 5%), radial-gradient(circle at 82% 72%,#fff 0 3%,transparent 4%), linear-gradient(135deg,#fff1e4,#ffd8ca 48%,#f6c1c0); overflow-x:hidden; }
+    body:before, body:after { content:"♡"; position:fixed; color:rgba(255,255,255,.5); font-size:120px; z-index:0; animation: float 5s ease-in-out infinite; }
+    body:before { top:6vh; left:4vw; } body:after { right:5vw; bottom:8vh; animation-delay:1.5s; }
+    .wrap { position:relative; z-index:1; width:min(92vw,760px); margin:auto; padding:38px 0 30px; text-align:center; }
+    .eyebrow { color:var(--coral); letter-spacing:.22em; font-size:12px; font-weight:700; }
+    h1 { margin:10px 0 7px; color:var(--wine); font-size:clamp(27px,6vw,46px); letter-spacing:.08em; text-shadow:0 3px 0 #fff5; }
+    .sub { margin:0 0 20px; color:#9c6970; font-size:14px; }
+    .card { position:relative; min-height:610px; padding:28px 24px 30px; border:1px solid rgba(255,255,255,.8); border-radius:36px; background:rgba(255,250,245,.74); box-shadow:0 22px 70px rgba(143,62,76,.16), inset 0 1px 0 #fff; backdrop-filter:blur(8px); overflow:hidden; }
+    .cat-stage { position:relative; width:min(67vw,280px); height:310px; margin:2px auto 8px; display:flex; align-items:end; justify-content:center; }
+    .cat-stage:before { content:""; position:absolute; width:250px; height:250px; border-radius:50%; background:#ffe5d2; filter:blur(9px); bottom:10px; }
+    .cat { position:relative; z-index:1; height:295px; max-width:100%; object-fit:contain; filter:drop-shadow(0 14px 10px rgba(126,67,49,.16)); animation: bob 3.2s ease-in-out infinite; mix-blend-mode:multiply; }
+    .question { font-size:clamp(20px,4vw,27px); font-weight:700; color:#71434c; margin:8px auto 22px; }
+    .buttons { display:flex; justify-content:center; gap:14px; flex-wrap:wrap; min-height:52px; }
+    button { font:inherit; cursor:pointer; border:0; transition:.2s ease; touch-action:manipulation; }
+    .choice { min-width:128px; padding:13px 25px; border-radius:999px; color:white; font-weight:700; box-shadow:0 8px 18px rgba(182,83,86,.2); }
+    .yes { background:linear-gradient(135deg,#ed8a78,#d75b68); } .no { background:#b98c91; }
+    .choice:hover { transform:translateY(-3px) scale(1.03); } .choice:active { transform:scale(.96); }
+    .food-list { display:flex; justify-content:center; flex-wrap:wrap; gap:12px; margin:10px auto 22px; }
+    .food { padding:12px 18px; border-radius:18px; background:#fff; color:var(--wine); border:1px solid #f3c3b7; box-shadow:0 5px 14px #b8675720; }
+    .food:hover,.food.selected { background:#fff0e9; border-color:var(--coral); transform:translateY(-2px); }
+    .hint { color:#a57278; font-size:13px; margin:0 0 8px; }
+    .cat-bouquet { display:none; position:absolute; z-index:2; left:50%; bottom:6px; transform:translateX(-50%) rotate(-8deg); font-size:64px; filter:drop-shadow(0 7px 5px #ad576444); animation:pop .65s cubic-bezier(.2,1.5,.5,1) both; }
+    .cat-bouquet.show { display:block; }
+    .bouquet { display:none; animation:pop .65s cubic-bezier(.2,1.5,.5,1) both; }
+    .bouquet.show { display:block; } .rose { font-size:72px; line-height:1; filter:drop-shadow(0 7px 6px #ad576444); }
+    .love-note { margin:12px auto 0; color:var(--wine); font-size:19px; font-weight:700; }
+    .floating-yes, .floating-no { position:absolute; z-index:4; padding:10px 20px; border-radius:999px; color:#fff; font-weight:700; box-shadow:0 7px 15px #b85b5b33; animation:appear .3s ease-out; }
+    .floating-yes { background:linear-gradient(135deg,#ef927e,#d55d6b); }
+    .floating-no { background:#b98c91; }
+    .heart { position:fixed; z-index:10; bottom:-30px; color:#e86f79; font-size:clamp(18px,4vw,32px); pointer-events:none; animation:heartRise linear forwards; }
+    .foot { margin-top:18px; color:#a77a7e; font-size:12px; }
+    @keyframes bob { 50%{ transform:translateY(-8px) rotate(1deg); } } @keyframes float { 50%{ transform:translateY(-18px) rotate(8deg); } } @keyframes pop { from{opacity:0;transform:scale(.4) translateY(25px)} to{opacity:1;transform:scale(1) translateY(0)} } @keyframes appear { from{opacity:0;transform:scale(.6)} to{opacity:1;transform:scale(1)} } @keyframes heartRise { from{opacity:0;transform:translateY(0) scale(.7) rotate(0)} 15%{opacity:1} to{opacity:0;transform:translateY(-110vh) scale(1.3) rotate(25deg)} }
+    @media(max-width:520px){ .wrap{padding-top:26px}.card{min-height:600px;padding:22px 15px 24px;border-radius:28px}.cat-stage{height:265px}.cat{height:252px}.cat-stage:before{width:220px;height:220px}.question{margin-bottom:18px}.choice{min-width:118px}.floating-yes{font-size:14px} }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <div class="eyebrow">A LITTLE DATE INVITATION · ♥</div>
+    <h1>你愿意跟我一起吃饭吗</h1>
+    <p class="sub">小猫已经认真准备好啦，请给它一个答案吧</p>
+    <section class="card" id="card">
+      <div class="cat-stage"><img class="cat" src="cat.png" alt="一只可爱的小猫" /><div class="cat-bouquet" id="catBouquet">💐</div></div>
+      <div id="question" class="question">选一个你心里的答案吧</div>
+      <div id="buttons" class="buttons">
+        <button class="choice yes" id="initialYes">愿意 ♡</button>
+        <button class="choice no" id="noBtn">不愿意</button>
+      </div>
+      <div id="foodArea" hidden>
+        <p class="hint">太好啦！那我们想吃什么呢？</p>
+        <div class="food-list">
+          <button class="food">火锅 ♨</button><button class="food">烧烤 ♡</button><button class="food">烤肉 ✦</button><button class="food">西餐 ☽</button><button class="food">日料 ❀</button>
+        </div>
+      </div>
+      <div class="bouquet" id="bouquet"><div class="rose">💐🌹</div><div class="love-note" id="note">好耶！这束花送给你 ♡</div></div>
+    </section>
+    <div class="foot">愿每一次相遇，都刚好有一顿热气腾腾的饭。</div>
+  </main>
+  <script>
+    const card = document.querySelector('#card'), noBtn = document.querySelector('#noBtn'), initialYes = document.querySelector('#initialYes');
+    const foodArea = document.querySelector('#foodArea'), buttons = document.querySelector('#buttons'), question = document.querySelector('#question'), bouquet = document.querySelector('#bouquet'), note = document.querySelector('#note'), catBouquet = document.querySelector('#catBouquet');
+    let yesCount = 0;
+    function showFood(){ document.querySelectorAll('.floating-no').forEach(el=>el.remove()); noBtn.remove(); foodArea.hidden=false; question.textContent='选好啦！接下来想吃什么？'; document.querySelectorAll('.food').forEach(btn=>btn.addEventListener('click',()=>{ document.querySelectorAll('.food').forEach(b=>b.classList.remove('selected')); btn.classList.add('selected'); foodArea.hidden=true; question.textContent='好期待和你一起吃饭呀！'; note.textContent=`${btn.textContent.replace(/[^\u4e00-\u9fa5]/g,'')}，出发！这束花送给你 ♡`; bouquet.classList.add('show'); catBouquet.classList.add('show'); startHearts(); })); }
+    initialYes.addEventListener('click',showFood);
+    function spawnNo(event){ if(event) event.currentTarget.remove(); yesCount++; const no=document.createElement('button'); no.className='floating-no'; no.textContent='不愿意'; const maxX=Math.max(8,card.clientWidth-130), maxY=Math.max(120,card.clientHeight-80); no.style.left=Math.random()*maxX+'px'; no.style.top=(80+Math.random()*(maxY-80))+'px'; card.appendChild(no); no.addEventListener('click',spawnNo); }
+    noBtn.addEventListener('click',spawnNo);
+    let heartTimer; function startHearts(){ if(heartTimer) return; heartTimer=setInterval(()=>{ const heart=document.createElement('span'); heart.className='heart'; heart.textContent=['♥','♡','❤','💗'][Math.floor(Math.random()*4)]; heart.style.left=Math.random()*96+'vw'; heart.style.animationDuration=(3+Math.random()*3)+'s'; document.body.appendChild(heart); setTimeout(()=>heart.remove(),6500); },420); }
+  </script>
+</body>
+</html>
